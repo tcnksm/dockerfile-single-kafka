@@ -31,7 +31,19 @@ $ docker run --rm -it \
     tcnksm/single-kafka
 ```
     
-To connect it from outside of docker container, you need to expose 2 ports and set 2 env variables. `9092` for broker and `2181` for zookeeper. `ADVERTISED_HOST` is host IP where kafka works (in this case it is docker host) and `ADVERTISED_PORT` is broker port. 
+To connect it from outside of docker container, you need to expose 2 ports and set 2 env variables. `9092` for broker and `2181` for zookeeper. `ADVERTISED_HOST` is host IP where kafka works (in this case it is docker host) and `ADVERTISED_PORT` is broker port.
+
+## Testing
+
+To try kafka you can use [kafkacat](https://github.com/edenhill/kafkacat),
+
+```bash
+$ echo 'This is test message' | kafkacat -t test-topic -b 192.168.59.103:9092
+```
+
+```bash
+$ kafkacat -C -t test-topic -b 192.168.59.103:9092
+```
 
 ## Contribution
 
