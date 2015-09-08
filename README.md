@@ -34,4 +34,4 @@ $ docker run --rm -it --name single-kafka -p 8080:8080 -p 9092:9092 -p 2181:2181
 
 ## Author
 
-[tcnksm](https://github.com/tcnksm)
+[Taichi Nakashima](https://github.com/tcnksm)
