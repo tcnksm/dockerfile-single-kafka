@@ -22,10 +22,16 @@ Tag is correspond to `${SCALA_VERSION}-${KAFKA_VERSION}`.
 To run single node kafka, 
 
 ```bash
-$ docker run --rm -it --name single-kafka -p 9092:9092 -p 2181:2181 tcnksm/single-kafka
+$ docker run --rm -it \
+    --name single-kafka \
+    --publish 9092:9092 \
+    --publish 2181:2181 \
+    --env ADVERTISED_HOST=192.168.59.103 \
+    --env ADVERTISED_PORT=9092 \
+    tcnksm/single-kafka
 ```
-
-To connect it from outside of docker container, you need to expose 2 ports. `9092` for broker and `2181` for zookeeper. 
+    
+To connect it from outside of docker container, you need to expose 2 ports and set 2 env variables. `9092` for broker and `2181` for zookeeper. `ADVERTISED_HOST` is host IP where kafka works (in this case it is docker host) and `ADVERTISED_PORT` is broker port. 
 
 ## Contribution
 
