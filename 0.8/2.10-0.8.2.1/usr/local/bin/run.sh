@@ -10,6 +10,10 @@ if [ ! -z "$ADVERTISED_PORT" ]; then
     sed -r -i "s/#(advertised.port)=(.*)/\1=$ADVERTISED_PORT/g" config/server.properties
 fi
 
+if [ ! -z "${NUM_PARTITIONS}" ]; then
+    sed -r -i "s/(num.partitions)=(.*)/\1=${NUM_PARTITIONS}/g" config/server.properties
+fi
+
 # Start to run zookeeper as background process
 bin/zookeeper-server-start.sh config/zookeeper.properties &
 
